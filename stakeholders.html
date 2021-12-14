@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>👪 Stakeholders - async fn fundamentals initiative</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="index.html">👋 Welcome</a></li><li class="chapter-item "><a href="updates.html">✏️ Updates</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="updates/2021-oct.html">2021-Oct</a></li></ol></li><li class="chapter-item "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="stakeholders.html" class="active">👪 Stakeholders</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="stakeholders/2021-nov.html">2021-Nov</a></li></ol></li><li class="chapter-item "><a href="roadmap.html">🛣 Roadmap</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="roadmap/static_async_trait.html">💬 Static async trait</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="roadmap/static_async_trait_mvp.html">MVP: Static async fn in traits</a></li></ol></li><li class="chapter-item "><a href="roadmap/impl_trait_in_traits.html">💬 impl Trait in traits</a></li><li class="chapter-item "><a href="roadmap/dyn_async_trait.html">💬 Dyn async trait</a></li><li class="chapter-item "><a href="roadmap/dyn_trait.html">💤 Dyn trait</a></li><li class="chapter-item "><a href="roadmap/async_drop.html">💤 Async drop</a></li><li class="chapter-item "><a href="roadmap/async_closures.html">💤 Async closures</a></li></ol></li><li class="chapter-item "><a href="evaluation.html">🔬 Evaluation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="evaluation/executor-styles.html">Executor styles</a></li><li class="chapter-item "><a href="evaluation/scenarios.html">Reference scenarios</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="evaluation/scenarios/background-logging.html">Background logging</a></li><li class="chapter-item "><a href="evaluation/scenarios/implementing-async-read.html">Implementing AsyncRead</a></li></ol></li><li class="chapter-item "><a href="evaluation/challenges.html">Challenges</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="evaluation/challenges/bounding_futures.html">Bounding futures</a></li><li class="chapter-item "><a href="evaluation/challenges/naming_futures.html">Naming futures</a></li><li class="chapter-item "><a href="evaluation/challenges/dyn_traits.html">Dyn traits</a></li><li class="chapter-item "><a href="evaluation/challenges/bounding_async_drop.html">Bounding async drop</a></li><li class="chapter-item "><a href="evaluation/challenges/guaranteeing_async_drop.html">Guaranteeing async drop</a></li><li class="chapter-item "><a href="evaluation/challenges/implicit_await_with_async_drop.html">Implicit await with async drop</a></li></ol></li><li class="chapter-item "><a href="evaluation/design.html">Design documents</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="evaluation/design/implied_send.html">Implied Send</a></li><li class="chapter-item "><a href="evaluation/design/trait_multiplication.html">Trait multiplication</a></li><li class="chapter-item "><a href="evaluation/design/inline_async_fn.html">Inline async fn</a></li><li class="chapter-item "><a href="evaluation/design/custom_dyn_impls.html">Custom dyn impls</a></li><li class="chapter-item "><a href="evaluation/design/auto_traits_consider_async_drop.html">Auto traits consider AsyncDrop</a></li><li class="chapter-item "><a href="evaluation/design/simple_names.html">Simple names</a></li><li class="chapter-item "><a href="evaluation/design/bound_items.html">Bound items</a></li><li class="chapter-item "><a href="evaluation/design/with_clauses.html">With clauses</a></li></ol></li></ol></li><li class="chapter-item "><a href="explainer.html">📚 Explainer</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="explainer/phase_1.html">Phase 1</a></li><li class="chapter-item "><a href="explainer/phase_1_narrative.html">Phase 1 narrative</a></li><li class="chapter-item "><a href="explainer/phase_2.html">Phase 2</a></li><li class="chapter-item "><a href="explainer/phase_3.html">Phase 3</a></li></ol></li><li class="chapter-item "><a href="RFC.html">✨ RFC</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="RFC/static_async_fn_in_traits.html">Static async fn in traits</a></li></ol></li><li class="chapter-item "><a href="FAQ.html">😕 FAQ</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">async fn fundamentals initiative</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/rust-lang/async-fundamentals-initiative" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/rust-lang/async-fundamentals-initiative/edit/master/./stakeholders.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="stakeholders"><a class="header" href="#stakeholders">Stakeholders</a></h1>
+<h2 id="stakeholder-representatives"><a class="header" href="#stakeholder-representatives">Stakeholder representatives</a></h2>
+<h3 id="the-pitch"><a class="header" href="#the-pitch">The pitch</a></h3>
+<p>The <a href="https://rust-lang.github.io/async-fundamentals-initiative/">async fundamentals initiative</a> is developing designs to bring async Rust &quot;on par&quot; with synchronous Rust in terms of its core capabilities:</p>
+<ul>
+<li>async functions in traits (our initial focus)</li>
+<li>async drop (coming later)</li>
+<li>async closures (coming later)</li>
+</ul>
+<p>We need feedback from people using Rust in production to ensure that our designs will meet their needs, but also to help us get some sense of how easy they will be to understand. One of the challenges with async Rust is that it has a lot of possible variations, and getting a sense for what kinds of capabilities are most important will help us to bias the designs.</p>
+<p><strong>We also want people to commit to experimenting with these designs while they are on nightly!</strong> This doesn't mean that you have to ship production software based on the nightly compiler. But it does mean that you agree to, perhaps, port your code over to use the nightly compiler on a branch and tell us how it goes. Or experiment with the nightly compiler on other codebases you are working on.</p>
+<h3 id="expected-time-commitment"><a class="header" href="#expected-time-commitment">Expected time commitment</a></h3>
+<ul>
+<li>One 90 minute meeting per month + written feedback
+<ul>
+<li>Stucture:
+<ul>
+<li>~30 minute presentation covering the latest thoughts</li>
+<li>~60 minutes open discussion with Tyler, Niko, other stakeholders</li>
+</ul>
+</li>
+<li>Written feedback:
+<ul>
+<li>answer some simple questions, provide overall perspective</li>
+<li>expected time: ~30 minutes or less</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Once features become available (likely early next year), creating branch that uses them
+<ul>
+<li>We will do our best to make this easy</li>
+<li>For example, I expect us to offer an alternative to <code>async-trait</code> procedural macro that generates code that requires the nightly compiler</li>
+<li>But this will still take some time! How much depends a bit on you.</li>
+<li>Let's guess-timate 2-3 hours per month</li>
+</ul>
+</li>
+</ul>
+<h3 id="benefits"><a class="header" href="#benefits">Benefits</a></h3>
+<ul>
+<li>Shape the design of async fn in traits</li>
+<li>Help ensure that it works for you</li>
+<li>A t-shirt!</li>
+</ul>
+<h3 id="goals-of-the-stakeholder-program"><a class="header" href="#goals-of-the-stakeholder-program">Goals of the stakeholder program</a></h3>
+<p>The goal of the stakeholder program is to make Rust's design process even more inclusive. We have observed that existing mechanisms like the RFC process or issue threads are often not a very good fit for certain categories of users, such as production users or the maintainers of large libraries, as they are not able to keep up with the discussion. As a result, they don't participate, and we wind up depriving ourselves of valuable feedback. The stakeholder program looks to supplement those mechanisms with direct contact.</p>
+<p>Another goal is to get more testing: one problem we have observed is that features are often developed and deployed on nightly, but production users don't really want to try them out until they hit stable! We would like to get some commitment from people to give things a try so that we have a better chance of finding problems before stabilization.</p>
+<p>We want to emphasize that we welcome design feedback from <strong>all Rust users</strong>, regardless of whether you are a named stakeholder or not. If you're using async Rust, or have read through the designs and have a question or idea for improvement, please feel free to <a href="https://github.com/rust-lang/async-fundamentals-initiative/issues/new/choose">open an issue</a> and tell us about it!</p>
+<h3 id="number-of-stakeholder-representatives"><a class="header" href="#number-of-stakeholder-representatives">Number of stakeholder representatives</a></h3>
+<p>We are selecting a small number of stakeholders covering various points in the design space, e.g.</p>
+<ul>
+<li>Web services author</li>
+<li>Embedded Rust</li>
+<li>Web framework author</li>
+<li>Web framework consumer</li>
+<li>High-performance computing</li>
+<li>Operating systems</li>
+</ul>
+<p>If you have thoughts or suggestions for good stakeholders, or you think that you yourself might be a good fit, please reach out to tmandry or nikomatsakis!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="CHARTER.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="stakeholders/2021-nov.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="CHARTER.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="stakeholders/2021-nov.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
